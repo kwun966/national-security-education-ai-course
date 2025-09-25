@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>经济与社会安全 - 课中学习模块</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f9fc;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a6fc4 0%, #004785 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .school-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .school-logo {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 12px;
+            text-align: center;
+            padding: 5px;
+            font-weight: bold;
+            color: #004785;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .module-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 1rem;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #1a6fc4;
+        }
+        
+        h2 {
+            color: #004785;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        h3 {
+            color: #1a6fc4;
+            margin: 20px 0 15px;
+        }
+        
+        h4 {
+            color: #2c3e50;
+            margin: 15px 0 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            background-color: #f0f7ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .grid-item {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 4px solid #004785;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        th {
+            background-color: #f0f7ff;
+            color: #004785;
+            font-weight: bold;
+        }
+        
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .phase {
+            background: #eef5ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+        
+        .phase-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .phase-number {
+            background: #1a6fc4;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .phase-title {
+            font-size: 1.4rem;
+            color: #004785;
+        }
+        
+        .ai-simulation {
+            background: #fff4e6;
+            border-left: 4px solid #ff922b;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .simulation-scenario {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .discussion-activity {
+            background: #e6f7ff;
+            border-left: 4px solid #1890ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #1a6fc4;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #004785;
+        }
+        
+        .btn-secondary {
+            background-color: #f0f7ff;
+            color: #004785;
+            border: 1px solid #1a6fc4;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e0eeff;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            background: #f0f7ff;
+        }
+        
+        .learning-objectives {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .objective-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            width: 30%;
+            min-width: 250px;
+            margin: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .objective-icon {
+            font-size: 2.5rem;
+            color: #1a6fc4;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .phase-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .phase-number {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+            
+            .objective-card {
+                width: 100%;
+            }
+            
+            .learning-objectives {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="school-info">
+                <div class="school-logo">上海建桥学院</div>
+                <div>
+                    <h1>经济与社会安全 - 课中学习模块</h1>
+                    <p class="subtitle">国家安全教育AI课程 · 第三模块</p>
+                    <span class="module-tag">AIRS智能学习系统应用</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="card">
+                <h2>课中学习目标</h2>
+                <div class="learning-objectives">
+                    <div class="objective-card">
+                        <div class="objective-icon">📚</div>
+                        <h3>深化理解</h3>
+                        <p>基于课前预习数据，针对学生薄弱环节和共性疑问，进行重点精讲和深度解析，巩固核心概念。</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-icon">💡</div>
+                        <h3>能力提升</h3>
+                        <p>通过AI模拟实训和深度研讨，培养学生分析经济安全风险、应对社会安全挑战的实践能力。</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-icon">🌱</div>
+                        <h3>价值内化</h3>
+                        <p>通过真实案例分析和情景模拟，引导学生树立维护国家经济安全和社会稳定的责任感与使命感。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>课中学习三阶段设计</h2>
+                
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-number">1</div>
+                        <div class="phase-title">重点知识精讲（20分钟）</div>
+                    </div>
+                    
+                    <h3>数据驱动的精准学习</h3>
+                    <p>教师根据AI系统提供的学情分析报告，针对学生预习中的共性疑难问题和知识薄弱点进行重点讲解：</p>
+                    
+                    <div class="grid">
+                        <div class="grid-item">
+                            <h4>核心概念精讲</h4>
+                            <ul>
+                                <li>系统性金融风险的形成机制与传导路径</li>
+                                <li>产业链供应链安全的"卡脖子"与"掉链子"风险区别</li>
+                                <li>经济安全与社会稳定的辩证关系</li>
+                            </ul>
+                        </div>
+                        <div class="grid-item">
+                            <h4>前沿动态解析</h4>
+                            <ul>
+                                <li>最新经济安全政策解读（结合中央经济工作会议精神）</li>
+                                <li>全球产业链重组趋势与我国应对策略</li>
+                                <li>数字经济发展中的数据安全与治理挑战</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight">
+                        <p><strong>AI辅助工具：</strong> 教师使用AI生成的动态可视化图表，展示经济安全相关数据的趋势和关联性，使抽象概念具象化。</p>
+                    </div>
+                </div>
+                
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-number">2</div>
+                        <div class="phase-title">深度研讨互动（25分钟）</div>
+                    </div>
+                    
+                    <h3>结构化研讨与AI辅助引导</h3>
+                    <p>基于真实案例和热点问题，组织学生进行结构化研讨，培养学生分析问题和解决问题的能力：</p>
+                    
+                    <div class="discussion-activity">
+                        <h4>活动一：产业链安全风险研判</h4>
+                        <p><strong>案例背景：</strong> 以芯片产业为例，分析全球供应链中断对我国经济安全的影响。</p>
+                        <p><strong>研讨问题：</strong></p>
+                        <ul>
+                            <li>如何评估我国在不同产业领域的供应链脆弱性？</li>
+                            <li>在全球化与自主可控之间如何寻求平衡？</li>
+                            <li>从国家、企业、个人层面可以采取哪些应对策略？</li>
+                        </ul>
+                        <p><strong>AI辅助：</strong> 小组讨论时，AI提供相关数据支持和建议讨论方向，实时记录各组观点。</p>
+                    </div>
+                    
+                    <div class="discussion-activity">
+                        <h4>活动二：金融安全情景模拟</h4>
+                        <p><strong>案例背景：</strong> 模拟一次区域性金融风险事件，如某地方债务问题引发的连锁反应。</p>
+                        <p><strong>角色分配：</strong> 学生分组扮演央行、地方政府、商业银行、企业和居民等不同角色。</p>
+                        <p><strong>研讨任务：</strong> 各角色从自身立场出发，提出应对策略并分析不同措施的利弊。</p>
+                        <p><strong>AI辅助：</strong> AI系统模拟不同决策可能带来的经济影响，提供实时数据反馈。</p>
+                    </div>
+                </div>
+                
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-number">3</div>
+                        <div class="phase-title">AI模拟实训（30分钟）</div>
+                    </div>
+                    
+                    <h3>沉浸式虚拟仿真体验</h3>
+                    <p>学生通过AI模拟实训平台，在虚拟环境中应对经济与社会安全挑战，将理论知识转化为实践能力：</p>
+                    
+                    <div class="ai-simulation">
+                        <h4>模拟实训一：宏观经济决策模拟器</h4>
+                        <div class="simulation-scenario">
+                            <p><strong>场景：</strong> 学生扮演国家经济安全决策团队成员，面对一系列内外经济挑战。</p>
+                            <p><strong>任务：</strong> 制定综合政策方案，平衡经济增长、金融稳定、就业保障等多目标。</p>
+                            <p><strong>AI反馈：</strong> 系统基于经济模型实时模拟政策效果，生成多维度的绩效评估报告。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-simulation">
+                        <h4>模拟实训二：社会风险预警与应对</h4>
+                        <div class="simulation-scenario">
+                            <p><strong>场景：</strong> 模拟一场公共卫生事件引发的社会经济连锁反应。</p>
+                            <p><strong>任务：</strong> 分析事件发展态势，评估不同行业和群体受到的影响，制定应对方案。</p>
+                            <p><strong>AI反馈：</strong> 系统根据学生决策的动态调整情境发展难度，提供专家策略对比。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight">
+                        <p><strong>AI导师功能：</strong> 在模拟实训过程中，AI扮演"智能导师"角色，提供实时提示、策略建议和错误纠正，帮助学生通过试错学习掌握复杂决策技能。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>教师角色与AI辅助功能</h2>
+                
+                <div class="grid">
+                    <div class="grid-item">
+                        <h3>教师角色转变</h3>
+                        <ul>
+                            <li><strong>从讲授者到引导者：</strong> 更多引导学生讨论和思考，而非单向传授知识</li>
+                            <li><strong>从统一教学到个性化指导：</strong> 基于AI学情数据，针对不同小组和个体提供差异化指导</li>
+                            <li><strong>从经验驱动到数据驱动：</strong> 依据实时数据调整教学策略和重点</li>
+                        </ul>
+                    </div>
+                    <div class="grid-item">
+                        <h3>AI辅助学习功能</h3>
+                        <ul>
+                            <li><strong>实时学情监控：</strong> 跟踪各组讨论进度和模拟实训表现</li>
+                            <li><strong>智能分组建议：</strong> 根据学生能力特点和课前表现优化研讨分组</li>
+                            <li><strong>讨论内容分析：</strong> 自动识别各组讨论中的亮点和盲点，提示教师介入指导</li>
+                            <li><strong>模拟难度调节：</strong> 根据学生表现动态调整模拟实训的复杂程度</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>学习评价与反馈机制</h2>
+                
+                <h3>过程性评价</h3>
+                <div class="grid">
+                    <div class="grid-item">
+                        <h4>研讨表现评价</h4>
+                        <p>AI系统记录每位学生在讨论中的发言次数、内容质量和对小组的贡献度，生成参与度报告。</p>
+                    </div>
+                    <div class="grid-item">
+                        <h4>模拟实训评价</h4>
+                        <p>系统根据学生在模拟中的决策质量、应变能力和方案效果，给出多维度的能力评估。</p>
+                    </div>
+                </div>
+                
+                <h3>即时反馈机制</h3>
+                <ul>
+                    <li><strong>个人反馈：</strong> 课后每位学生收到AI生成的个性化学习报告，包括优点、不足和改进建议</li>
+                    <li><strong>教师反馈：</strong> 系统为教师提供课堂整体效果分析，包括学习目标达成度、学生参与情况和需关注的重点学生</li>
+                    <li><strong>学习优化：</strong> 基于课堂数据，AI为后续学习内容和方法调整提供建议</li>
+                </ul>
+                
+                <div class="highlight">
+                    <p>课中学习模块通过"精讲-研讨-实训"的三段式设计，充分发挥教师主导和学生主体作用，利用AI技术实现规模化因材施教，将经济与社会安全的抽象概念转化为可感知、可操作的实践能力。</p>
+                </div>
+                
+                <a href="#" class="btn">返回课程主页</a>
+                <a href="#" class="btn btn-secondary">查看课前学习方案</a>
+                <a href="#" class="btn">下载学习资源包</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>上海建桥学院马克思主义学院 © 2023 | 《国家安全教育》课程组</p>
+            <p>地址：上海市浦东新区沪城环路1111号 | 电话：021-58137799</p>
+        </footer>
+    </div>
+</body>
+</html>

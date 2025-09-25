@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生态与资源安全 - 课后学习模块</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f8fb;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .school-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .school-logo {
+            width: 70px;
+            height: 70px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 12px;
+            text-align: center;
+            padding: 5px;
+            font-weight: bold;
+            color: #27ae60;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .module-nav {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: #27ae60;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eaeaea;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: #2ecc71;
+        }
+        
+        h3 {
+            color: #27ae60;
+            margin: 20px 0 15px;
+        }
+        
+        h4 {
+            color: #2c3e50;
+            margin: 15px 0 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        /* 课后模块样式 */
+        .homework-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 900px) {
+            .homework-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .personalized-work {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .ai-recommendation {
+            background: #f0f7ff;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .question {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .answer-area {
+            width: 100%;
+            min-height: 100px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-top: 10px;
+            resize: vertical;
+        }
+        
+        .forum-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 900px) {
+            .forum-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .discussion-main {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .ai-recommended {
+            background: #f0f7ff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .post {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .recommended-post {
+            border-left: 4px solid #27ae60;
+            background: #e6f7ee;
+        }
+        
+        .post-input {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .post-input textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            resize: vertical;
+        }
+        
+        .post-input button {
+            align-self: flex-end;
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        
+        .project-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 900px) {
+            .project-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .project-info {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .ai-tools {
+            background: #f0f7ff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .project-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .team-members {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .member {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: #e6f7ee;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .tool-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .progress-container {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #eaeaea;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #2ecc71 0%, #27ae60 100%);
+            border-radius: 5px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #219653;
+        }
+        
+        .btn-secondary {
+            background-color: #f0f7ff;
+            color: #27ae60;
+            border: 1px solid #27ae60;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e0eeff;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .school-info {
+                flex-direction: column;
+            }
+            
+            .school-logo {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .homework-section, .forum-section, .project-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="school-info">
+                    <div class="school-logo">上海建桥学院</div>
+                    <div>
+                        <h1>生态与资源安全 - 课后学习模块</h1>
+                        <p class="subtitle">AI驱动的个性化作业 · 论坛讨论 · 小组合作研究</p>
+                    </div>
+                </div>
+                <div class="module-nav">
+                    <button class="nav-btn"><i class="fas fa-home"></i> 首页</button>
+                    <button class="nav-btn"><i class="fas fa-book"></i> 课程大纲</button>
+                    <button class="nav-btn"><i class="fas fa-user"></i> 学习中心</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- 课后模块 -->
+        <div class="card">
+            <h2><i class="fas fa-tasks"></i> AI驱动的个性化作业</h2>
+            <p>基于您的学习表现和知识掌握情况，AI系统为您生成了以下个性化作业。完成后系统将自动评估并提供详细反馈。</p>
+            
+            <div class="homework-section">
+                <div class="personalized-work">
+                    <h3><i class="fas fa-user-cog"></i> 为您定制的作业</h3>
+                    
+                    <div class="question">
+                        <h4>问题一：生态文明建设的理论与实践</h4>
+                        <p>请结合具体案例，阐述生态文明建设的主要内容和实践路径，并分析其在保障国家生态安全中的重要作用。</p>
+                        <textarea class="answer-area" placeholder="请输入您的回答..."></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>问题二：资源安全保障策略</h4>
+                        <p>分析我国在能源、水资源、粮食等领域面临的安全挑战，并提出相应的安全保障策略和建议。</p>
+                        <textarea class="answer-area" placeholder="请输入您的回答..."></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>问题三：可持续发展路径</h4>
+                        <p>探讨实现生态安全、资源安全与经济高质量发展协同推进的路径和方法，并提出具体实施建议。</p>
+                        <textarea class="answer-area" placeholder="请输入您的回答..."></textarea>
+                    </div>
+                    
+                    <button class="btn"><i class="fas fa-paper-plane"></i> 提交作业</button>
+                </div>
+                
+                <div class="ai-recommendation">
+                    <h3><i class="fas fa-robot"></i> AI学习建议</h3>
+                    <p>根据您的学习数据分析，为您推荐以下学习资源：</p>
+                    
+                    <div class="question">
+                        <h4>知识薄弱点补充</h4>
+                        <ul>
+                            <li>生态文明理论的形成与发展</li>
+                            <li>资源安全评价指标体系</li>
+                            <li>生态补偿机制与政策</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>推荐学习资源</h4>
+                        <ul>
+                            <li>视频：《生态文明建设的中国实践》（22分钟）</li>
+                            <li>文章：《"双碳"目标下的能源安全战略》</li>
+                            <li>案例：《长江经济带生态保护与绿色发展》</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="question">
+                        <h4>AI预测评估</h4>
+                        <p>根据您的学习模式分析，预计完成本次作业需要：<strong>60-80分钟</strong></p>
+                        <p>预期掌握程度：<strong>85%</strong></p>
+                        
+                        <div class="progress-container">
+                            <p>当前知识掌握度</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 70%;"></div>
+                            </div>
+                            <p>70% 已完成</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-comments"></i> 论坛讨论（AI推荐优质发言）</h2>
+            <p>参与课程论坛讨论，分享您的观点。AI系统将自动识别和推荐高质量发言，促进深度交流。</p>
+            
+            <div class="forum-section">
+                <div class="discussion-main">
+                    <h3><i class="fas fa-fire"></i> 热门讨论话题</h3>
+                    
+                    <div class="discussion-topic">
+                        <h4>如何在日常生活中践行生态文明理念，贡献生态与资源安全？</h4>
+                        <p>发布者：王教授 · 发布时间：2024-02-10 · 参与人数：138</p>
+                    </div>
+                    
+                    <div class="post">
+                        <div class="post-header">
+                            <span><i class="fas fa-user"></i> 张明</span>
+                            <span><i class="fas fa-clock"></i> 2024-02-11 09:30</span>
+                        </div>
+                        <p>我认为可以从节约用水用电、减少一次性塑料使用、垃圾分类、绿色出行等方面做起，这些日常小事都能为生态与资源安全做出贡献。</p>
+                        <div class="post-header">
+                            <span><i class="fas fa-heart" style="color: #e74c3c;"></i> 赞(45)</span>
+                            <span><i class="fas fa-comment"></i> 回复(12)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="post recommended-post">
+                        <div class="post-header">
+                            <span><i class="fas fa-user"></i> 李环保 <span style="background: #27ae60; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem;">AI推荐</span></span>
+                            <span><i class="fas fa-clock"></i> 2024-02-11 15:20</span>
+                        </div>
+                        <p>除了个人行为，我们还可以参与环保志愿活动、关注和支持环保政策、选择环保产品和服务。更重要的是培养生态文明意识，影响身边的人，形成良好的社会氛围。每个人都是生态文明的实践者和推动者。</p>
+                        <div class="post-header">
+                            <span><i class="fas fa-heart" style="color: #e74c3c;"></i> 赞(72)</span>
+                            <span><i class="fas fa-comment"></i> 回复(28)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="post">
+                        <div class="post-header">
+                            <span><i class="fas fa-user"></i> 赵绿意</span>
+                            <span><i class="fas fa-clock"></i> 2024-02-12 10:15</span>
+                        </div>
+                        <p>还可以通过社交媒体分享环保知识，参与环保话题讨论，提高公众对生态与资源安全问题的关注度。知识传播也是重要的贡献方式。</p>
+                        <div class="post-header">
+                            <span><i class="fas fa-heart" style="color: #e74c3c;"></i> 赞(38)</span>
+                            <span><i class="fas fa-comment"></i> 回复(9)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="post-input">
+                        <h4>发表您的观点</h4>
+                        <textarea placeholder="请输入您的回复..."></textarea>
+                        <button><i class="fas fa-paper-plane"></i> 发布</button>
+                    </div>
+                </div>
+                
+                <div class="ai-recommended">
+                    <h3><i class="fas fa-award"></i> AI推荐优质发言</h3>
+                    <p>基于内容质量、深度和影响力，AI系统推荐以下高质量发言：</p>
+                    
+                    <div class="post recommended-post">
+                        <div class="post-header">
+                            <span><i class="fas fa-user"></i> 周专家</span>
+                            <span><i class="fas fa-star" style="color: gold;"></i> 96分</span>
+                        </div>
+                        <p>从系统思维角度看，生态与资源安全需要综合考虑自然、经济、社会等多维度因素。个人行动重要，但更需要制度保障、技术创新和文化引导的多重推动...</p>
+                        <div class="post-header">
+                            <span><i class="fas fa-comment"></i> 查看完整内容</span>
+                        </div>
+                    </div>
+                    
+                    <div class="post recommended-post">
+                        <div class="post-header">
+                            <span><i class="fas fa-user"></i> 吴研究员</span>
+                            <span><i class="fas fa-star" style="color: gold;"></i> 93分</span>
+                        </div>
+                        <p>生态文明建设涉及生产方式、生活方式、思维方式和价值观念的全方位变革。需要建立生态优先的决策机制、绿色低碳的产业体系、简约适度的生活风尚...</p>
+                        <div class="post-header">
+                            <span><i class="fas fa-comment"></i> 查看完整内容</span>
+                        </div>
+                    </div>
+                    
+                    <div class="post recommended-post">
+                        <div class="post-header">
+                            <span><i class="fas fa-user"></i> 郑教授</span>
+                            <span><i class="fas fa-star" style="color: gold;"></i> 91分</span>
+                        </div>
+                        <p>资源安全不仅是供应安全，还包括价格可承受、运输可靠、使用清洁等多重维度。需要建立多元化的供应体系、战略储备机制、国际合作网络...</p>
+                        <div class="post-header">
+                            <span><i class="fas fa-comment"></i> 查看完整内容</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <h4>AI评价标准</h4>
+                        <ul>
+                            <li>观点深度与原创性 (30%)</li>
+                            <li>论证逻辑与依据 (25%)</li>
+                            <li>语言表达质量 (20%)</li>
+                            <li>互动与影响力 (25%)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-users"></i> 小组合作研究性学习项目</h2>
+            <p>基于AI数据分析的研究性学习项目，与您的小组成员合作完成一项关于生态与资源安全的专题研究。</p>
+            
+            <div class="project-section">
+                <div class="project-info">
+                    <h3><i class="fas fa-project-diagram"></i> 小组研究项目</h3>
+                    
+                    <div class="project-card">
+                        <h4>项目主题：城市生态文明建设与资源循环利用模式研究</h4>
+                        <p>基于AI分析城市生态足迹和资源流动，研究生态文明建设背景下城市资源循环利用的创新模式，并提出政策建议。</p>
+                        
+                        <div class="progress-container">
+                            <p>项目进度</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 65%;"></div>
+                            </div>
+                            <p>65% 已完成</p>
+                        </div>
+                        
+                        <h4>小组成员</h4>
+                        <div class="team-members">
+                            <div class="member"><i class="fas fa-user"></i> 张明 (组长)</div>
+                            <div class="member"><i class="fas fa-user"></i> 李环保</div>
+                            <div class="member"><i class="fas fa-user"></i> 赵绿意</div>
+                            <div class="member"><i class="fas fa-user"></i> 周专家</div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h4>任务分工</h4>
+                        <ul>
+                            <li>张明：总体设计、协调与报告撰写</li>
+                            <li>李环保：数据收集与分析</li>
+                            <li>赵绿意：案例研究与模式总结</li>
+                            <li>周专家：政策建议与实施路径</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h4>下一步计划</h4>
+                        <ul>
+                            <li>完成数据分析与模式提炼（预计6天）</li>
+                            <li>撰写研究报告初稿（预计8天）</li>
+                            <li>小组讨论修改（预计4天）</li>
+                            <li>最终成果提交与展示（预计7天）</li>
+                        </ul>
+                        <button class="btn"><i class="fas fa-edit"></i> 更新项目进度</button>
+                    </div>
+                </div>
+                
+                <div class="ai-tools">
+                    <h3><i class="fas fa-tools"></i> AI研究助手</h3>
+                    <p>以下AI工具可辅助您的小组研究：</p>
+                    
+                    <div class="tool-card">
+                        <h4><i class="fas fa-chart-line"></i> 数据分析工具</h4>
+                        <p>基于AI的城市生态足迹和资源流分析，自动生成数据可视化和趋势预测。</p>
+                        <button class="btn" style="padding: 8px 15px; font-size: 0.9rem;">使用工具</button>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <h4><i class="fas fa-book"></i> 文献推荐引擎</h4>
+                        <p>根据您的研究主题，AI推荐相关学术文献、政策报告和最佳实践案例。</p>
+                        <button class="btn" style="padding: 8px 15px; font-size: 0.9rem;">获取文献</button>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <h4><i class="fas fa-check-circle"></i> 报告质量评估</h4>
+                        <p>AI初步评估研究报告质量，提供修改建议和优化方向。</p>
+                        <button class="btn" style="padding: 8px 15px; font-size: 0.9rem;">评估报告</button>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <h4><i class="fas fa-brain"></i> 研究思路建议</h4>
+                        <p>基于相似研究项目的成功经验，AI为您的研究提供创新思路和方法建议。</p>
+                        <button class="btn" style="padding: 8px 15px; font-size: 0.9rem;">获取建议</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3>项目时间线</h3>
+                <div class="progress-container">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span>项目启动</span>
+                        <span>数据收集</span>
+                        <span>分析阶段</span>
+                        <span>报告撰写</span>
+                        <span>成果提交</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 65%;"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: #666;">
+                        <span>2月5日</span>
+                        <span>2月15日</span>
+                        <span>2月25日</span>
+                        <span>3月5日</span>
+                        <span>3月15日</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <button class="btn btn-secondary"><i class="fas fa-arrow-left"></i> 返回课中学习模块</button>
+            <button class="btn"><i class="fas fa-download"></i> 下载学习资源包</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>上海建桥学院马克思主义学院 © 2024 | 《国家安全教育》课程组</p>
+            <p>地址：上海市浦东新区沪城环路1111号 | 电话：021-58137799</p>
+            <p>AI技术支持：建桥教育科技人工智能实验室</p>
+        </div>
+    </footer>
+
+    <script>
+        // 交互功能实现
+        document.addEventListener('DOMContentLoaded', function() {
+            // 提交作业按钮
+            const submitBtn = document.querySelector('.personalized-work .btn');
+            submitBtn.addEventListener('click', function() {
+                const answerAreas = document.querySelectorAll('.answer-area');
+                let allAnswered = true;
+                
+                answerAreas.forEach(area => {
+                    if (!area.value.trim()) {
+                        allAnswered = false;
+                        area.style.borderColor = '#e74c3c';
+                    } else {
+                        area.style.borderColor = '#ddd';
+                    }
+                });
+                
+                if (!allAnswered) {
+                    alert('请完成所有问题后再提交作业！');
+                    return;
+                }
+                
+                alert('作业已提交！AI系统正在评估您的答案，稍后将提供详细反馈。');
+                submitBtn.textContent = '已提交，等待评估';
+                submitBtn.disabled = true;
+                submitBtn.style.backgroundColor = '#666';
+                
+                // 模拟AI评估过程
+                setTimeout(() => {
+                    const progressBar = document.querySelector('.ai-recommendation .progress');
+                    const progressText = document.querySelector('.ai-recommendation .progress-container p:last-child');
+                    
+                    progressBar.style.width = '85%';
+                    progressText.textContent = '85% 已完成';
+                    
+                    alert('作业评估完成！您的得分：89/100。AI已为您生成学习分析报告。');
+                }, 3000);
+            });
+            
+            // 论坛发布按钮
+            const postBtn = document.querySelector('.post-input button');
+            postBtn.addEventListener('click', function() {
+                const textarea = document.querySelector('.post-input textarea');
+                const content = textarea.value.trim();
+                
+                if (!content) {
+                    alert('请输入回复内容！');
+                    textarea.focus();
+                    return;
+                }
+                
+                // 模拟添加新帖子
+                const newPost = document.createElement('div');
+                newPost.classList.add('post');
+                newPost.innerHTML = `
+                    <div class="post-header">
+                        <span><i class="fas fa-user"></i> 您</span>
+                        <span><i class="fas fa-clock"></i> 刚刚</span>
+                    </div>
+                    <p>${content}</p>
+                    <div class="post-header">
+                        <span><i class="fas fa-heart" style="color: #e74c3c;"></极> 赞(0)</span>
+                        <span><i class="fas fa-comment"></i> 回复(0)</span>
+                    </div>
+                `;
+                
+                const discussionMain = document.querySelector('.discussion-main');
+                const postInput = document.querySelector('.post-input');
+                discussionMain.insertBefore(newPost, postInput);
+                
+                textarea.value = '';
+                alert('回复已发布！');
+                
+                // 模拟AI推荐
+                setTimeout(() => {
+                    if (content.length > 80 && !content.includes('?')) {
+                        newPost.classList.add('recommended-post');
+                        newPost.querySelector('.post-header span:first-child').innerHTML += 
+                            ' <span style="background: #27ae60; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem;">AI推荐</span>';
+                        alert('恭喜！您的发言因高质量被AI推荐！');
+                    }
+                }, 2000);
+            });
+            
+            // AI工具按钮
+            const toolBtns = document.querySelectorAll('.ai-tools .btn');
+            toolBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const toolName = this.parentElement.querySelector('h4').textContent;
+                    alert(`【${toolName}】功能已启动，正在为您生成结果...`);
+                    
+                    // 模拟工具运行
+                    setTimeout(() => {
+                        alert(`【${toolName}】已完成！结果已保存到您的项目文件夹中。`);
+                    }, 2000);
+                });
+            });
+            
+            // 更新项目进度按钮
+            const updateBtn = document.querySelector('.project-info .btn');
+            updateBtn.addEventListener('click', function() {
+                const newProgress = prompt('请输入当前项目进度百分比（0-100）：');
+                
+                if (newProgress && !isNaN(newProgress) && newProgress >= 0 && newProgress <= 100) {
+                    const progressBar = document.querySelector('.project-info .progress');
+                    const progressText = document.querySelector('.project-info .progress-container p:last-child');
+                    
+                    progressBar.style.width = `${newProgress}%`;
+                    progressText.textContent = `${newProgress}% 已完成`;
+                    
+                    // 更新时间线进度
+                    const timelineProgress = document.querySelector('.project-section + .progress-container .progress');
+                    timelineProgress.style.width = `${newProgress}%`;
+                    
+                    alert('项目进度已更新！');
+                } else {
+                    alert('请输入有效的百分比数值！');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网络与数据安全 - 课前预习模块</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f0f7ff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a6fc4 0%, #004785 100%);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .school-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .school-logo {
+            width: 70px;
+            height: 70px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 12px;
+            text-align: center;
+            padding: 5px;
+            font-weight: bold;
+            color: #004785;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .module-nav {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: #004785;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eaeaea;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: #1a6fc4;
+        }
+        
+        h3 {
+            color: #1a6fc4;
+            margin: 20px 0 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .video-section {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .video-player {
+            flex: 1;
+            min-width: 300px;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 300px;
+        }
+        
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background: linear-gradient(135deg, #1a6fc4 0%, #004785 100%);
+        }
+        
+        .video-list {
+            flex: 1;
+            min-width: 300px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .video-item {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .video-item:hover {
+            background: #e6f2ff;
+        }
+        
+        .video-item.active {
+            background: #d4e7ff;
+            border-left: 4px solid #1a6fc4;
+        }
+        
+        .quiz-section {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .quiz-question {
+            margin-bottom: 20px;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .option {
+            padding: 12px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .option:hover {
+            background: #e6f2ff;
+            border-color: #1a6fc4;
+        }
+        
+        .option.selected {
+            background: #d4e7ff;
+            border-color: #1a6fc4;
+        }
+        
+        .ai-assistant {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .chat-container {
+            flex: 1;
+            min-width: 300px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 400px;
+        }
+        
+        .chat-header {
+            background: #1a6fc4;
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 12px;
+            border-radius: 10px;
+            line-height: 1.5;
+        }
+        
+        .ai-message {
+            background: #e6f2ff;
+            align-self: flex-start;
+            border-bottom-left-radius: 0;
+        }
+        
+        .user-message {
+            background: #d4e7ff;
+            align-self: flex-end;
+            border-bottom-right-radius: 0;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            background: white;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+        
+        .chat-input button {
+            background: #1a6fc4;
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 20px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        
+        .ai-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .progress-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #eaeaea;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 15px 极
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #1a6fc4 极%, #004785 100%);
+            width: 65%;
+            border-radius: 5px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #1a6fc4;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #004785;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .school-info {
+                flex-direction: column;
+            }
+            
+            .school-logo {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .video-section, .ai-assistant {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="school-info">
+                    <div class="school-logo">上海建桥学院</div>
+                    <div>
+                        <h1>网络与数据安全 - 课前预习模块</h1>
+                        <p class="subtitle">AI赋能国家安全教育 | 网络与数据安全专题</p>
+                    </div>
+                </div>
+                <div class="module-nav">
+                    <button class="nav-btn"><i class="fas fa-home"></i> 首页</button>
+                    <button class="nav-btn"><i class="fas fa-book"></i> 课程大纲</button>
+                    <button class="nav-btn"><i class="fas fa-user"></i> 学习中心</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2><i class="fas fa-video"></i> 精选短视频学习</h2>
+            <p>请观看以下视频内容，了解网络与数据安全的核心概念和重要意义。系统将根据您的观看完成度自动记录学习进度。</p>
+            
+            <div class="video-section">
+                <div class="video-player">
+                    <div class="video-placeholder">
+                        <div>
+                            <i class="fas fa-play-circle" style="font-size: 48px; margin-bottom: 15px;"></i>
+                            <p>网络安全基础：CIA三要素</p>
+                            <p>时长: 14:20 | 已观看: 75%</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-list">
+                    <div class="video-item active">
+                        <i class="fas fa-play-circle"></i>
+                        <div>
+                            <h4>网络安全基础：CIA三要素</h4>
+                            <p>14:20 | 已观看75%</p>
+                        </div>
+                    </div>
+                    <div class="video-item">
+                        <i class="fas fa-play-circle"></i>
+                        <div>
+                            <h4>数据安全与隐私保护</h4>
+                            <p>18:45 | 未开始</p>
+                        </div>
+                    </div>
+                    <div class="video-item">
+                        <i class="fas fa-play-circle"></i>
+                        <div>
+                            <h4>常见网络攻击与防范</h4>
+                            <p>22:10 | 未开始</p>
+                        </div>
+                    </div>
+                    <div class="video-item">
+                        <i class="fas fa-play-circle"></i>
+                        <div>
+                            <h4>密码学与加密技术</h4>
+                            <p>16:30 | 未开始</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <h3>您的视频学习进度</h3>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <p>已完成：1/4 个视频 | 总进度：25%</p>
+                <button class="btn"><i class="fas fa-sync-alt"></i> 更新学习记录</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-tasks"></i> 自适应预习测评</h2>
+            <p>根据您的学习档案和前期知识储备，系统为您生成了以下预习题目。完成后AI将为您推荐个性化学习路径。</p>
+            
+            <div class="quiz-section">
+                <div class="quiz-question">
+                    <h4>1. 网络安全中的CIA三要素是指：</h4>
+                    <div class="options">
+                        <div class="option">A. 中央情报局、联邦调查局、国家安全局</div>
+                        <div class="option selected">B. 保密性、完整性、可用性</div>
+                        <div class="option">C. 云计算、物联网、人工智能</div>
+                        <div class="option">D. 密码学、身份验证、访问控制</div>
+                    </div>
+                </div>
+                
+                <div class="quiz-question">
+                    <h4>2. 下列哪项不属于常见的数据安全威胁？</h4>
+                    <div class="options">
+                        <div class="option">A. 数据泄露</div>
+                        <div class="option">B. 数据篡改</div>
+                        <div class="option selected">C. 数据备份</div>
+                        <div class="option">D. 数据销毁</div>
+                    </div>
+                </div>
+                
+                <div class="quiz-question">
+                    <h极>3. 密码学的主要目的是：</h4>
+                    <div class="options">
+                        <div class="option">A. 提高数据传输速度</div>
+                        <div class="option">B. 减少数据存储空间</div>
+                        <div class="option selected">C. 保护信息的机密性和完整性</div>
+                        <div class="option">D. 简化网络架构</div>
+                    </div>
+                </div>
+                
+                <div class="quiz-question">
+                    <h4>4. 《网络安全法》于哪一年正式实施？</h4>
+                    <div class="options">
+                        <div class="option">A. 2015年</div>
+                        <div class="option selected">B. 2017年</div>
+                        <div class="option">C. 2019年</div>
+                        <div class="option">D. 2021年</div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn"><i class="fas fa-check-circle"></极> 提交答案并生成学习路径</button>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-robot"></i> AI助教答疑</h2>
+            <p>您好！我是国家安全教育AI助教小安，有什么关于网络与数据安全的问题，欢迎随时向我提问。</p>
+            
+            <div class="ai-assistant">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <i class="fas fa-robot"></i>
+                        <h3>AI助教小安</h3>
+                    </div>
+                    <div class="chat-messages">
+                        <div class="message ai-message">
+                            您好！我是AI助教小安，负责协助您学习网络与数据安全相关内容。有什么问题可以随时问我。
+                        </div>
+                        <div class="message user-message">
+                            什么是网络钓鱼攻击？
+                        </div>
+                        <div class="message ai-message">
+                            网络钓鱼是一种通过伪装成可信实体（如银行、社交媒体平台等）来诱骗用户提供敏感信息的攻击方式。常见形式包括伪造电子邮件、网站和消息，目的是窃取用户名、密码、信用卡信息等。
+                        </div>
+                        <div class="message user-message">
+                            如何防范网络钓鱼攻击？
+                        </div>
+                        <div class="message ai-message">
+                            防范网络钓鱼的方法包括：1. 谨慎对待索要个人信息的邮件和消息；2. 检查网址是否正确；3. 不点击可疑链接；4. 使用双因素认证；5. 安装和更新防病毒软件；6. 定期进行安全意识培训。
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" placeholder="请输入您的问题...">
+                        <button><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+                
+                <div class="ai-info">
+                    <h3><i class="fas fa-lightbulb"></i> AI助教功能</h3>
+                    <ul>
+                        <li>解答课程相关问题</li>
+                        <li>推荐个性化学习资源</li>
+                        <li>解释复杂概念和理论</li>
+                        <li>提供学习进度分析</li>
+                        <li>24小时在线答疑</li>
+                    </ul>
+                    
+                    <h3><i class="fas fa-star"></i> 网络与数据安全热门问题</h3>
+                    <ul>
+                        <li>什么是DDoS攻击？如何防范？</li>
+                        <li>加密算法有哪些类型？</li>
+                        <li>《数据安全法》的主要内容是什么？</li>
+                        <li>如何创建强密码并安全管理？</li>
+                        <li>什么是零信任安全架构？</li>
+                    </ul>
+                    
+                    <div class="progress-container">
+                        <h4>您的知识掌握情况</h4>
+                        <p>网络安全理解度: <strong>70%</strong></p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 70%;"></div>
+                        </div>
+                        
+                        <p>数据安全理解度: <strong>65%</strong></p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 65%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>上海建桥学院马克思主义学院 © 2023 | 《国家安全教育》课程组</p>
+            <p>地址：上海市浦东新区沪城环路1111号 | 电话：021-58137799</p>
+            <p>AI技术支持：建桥教育科技人工智能实验室</p>
+        </div>
+    </footer>
+
+    <script>
+        // 交互功能实现
+        document.addEventListener('DOMContentLoaded', function() {
+            // 选项选择
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    // 移除同问题中其他选项的选中状态
+                    const parent = this.closest('.quiz-question');
+                    parent.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // 选中当前选项
+                    this.classList.add('selected');
+                });
+            });
+            
+            // 视频项选择
+            const videoItems = document.querySelectorAll('.video-item');
+            videoItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    videoItems.forEach(v => v.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 更新视频播放器内容
+                    const videoTitle = this.querySelector('h4').textContent;
+                    document.querySelector('.video-placeholder p:first-child').textContent = videoTitle;
+                });
+            });
+            
+            // 发送消息功能
+            const chatInput = document.querySelector('.chat-input input');
+            const chatButton = document.querySelector('.chat-input button');
+            const chatMessages = document.querySelector('.chat-messages');
+            
+            chatButton.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            function sendMessage() {
+                const message = chatInput.value.trim();
+                if (message) {
+                    // 添加用户消息
+                    addMessage(message, 'user');
+                    chatInput.value = '';
+                    
+                    // 模拟AI回复
+                    setTimeout(() => {
+                        let aiResponse = "这是一个关于网络与数据安全的好问题。根据我的知识库，";
+                        
+                        if (message.includes('钓鱼') || message.includes('网络钓鱼')) {
+                            aiResponse += "网络钓鱼是一种社会工程学攻击，通过伪装成可信实体骗取敏感信息。防范措施包括谨慎对待索要信息的请求、检查网址真实性、不点击可疑链接等。";
+                        } else if (message.includes('DDoS')) {
+                            aiResponse += "DDoS攻击是通过大量请求淹没目标服务器，使其无法正常服务的攻击方式。防范措施包括使用DDoS防护服务、配置防火墙、增加带宽冗余等。";
+                        } else if (message.includes('加密') || message.includes('密码学')) {
+                            aiResponse += "加密技术通过对信息进行编码来保护其机密性。主要分为对称加密（如AES）和非对称加密（如RSA）。现代加密算法能有效保护数据传输和存储的安全。";
+                        } else if (message.includes('数据安全法')) {
+                            aiResponse += "《数据安全法》于2021年9月1日正式施行，确立了数据分类分级、风险评估、监测预警、应急处置等基本制度，规范数据处理活动，保障数据安全。";
+                        } else if (message.includes('零信任')) {
+                            aiResponse += "零信任安全架构的核心原则是'从不信任，总是验证'，不区分内外网，对所有访问请求进行严格身份验证和授权。这种模式能有效防止内部和外部威胁。";
+                        } else {
+                            aiResponse += "建议您参考课程教材第六章的内容，或者观看视频库中的'网络与数据安全详解'视频，时长20分钟。";
+                        }
+                        
+                        addMessage(aiResponse, 'ai');
+                    }, 1000);
+                }
+            }
+            
+            function addMessage(text, type) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message');
+                messageDiv.classList.add(type === 'user' ? 'user-message' : 'ai-message');
+                messageDiv.textContent = text;
+                
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            // 更新学习进度按钮
+            const updateBtn = document.querySelector('.progress-container .btn');
+            updateBtn.addEventListener('click', function() {
+                const progressBar = document.querySelector('.progress');
+                const progressText = document.querySelector('.progress-container p:last-child');
+                
+                // 模拟进度更新
+                const currentWidth = parseInt(progressBar.style.width);
+                const newWidth = currentWidth + 25;
+                
+                if (newWidth <= 100) {
+                    progressBar.style.width = newWidth + '%';
+                    progressText.textContent = `已完成：${newWidth/25}/4 个视频 | 总进度：${newWidth}%`;
+                    
+                    if (newWidth === 100) {
+                        alert('恭喜！您已完成所有视频学习！');
+                    }
+                } else {
+                    alert('您已经完成所有视频学习了！');
+                }
+            });
+            
+            // 提交答案按钮
+            const submitBtn = document.querySelector('.quiz-section .btn');
+            submitBtn.addEventListener('click', function() {
+                const selectedOptions = document.querySelectorAll('.option.selected');
+                
+                if (selectedOptions.length < 4) {
+                    alert('请完成所有题目后再提交！');
+                    return;
+                }
+                
+                alert('答案已提交！AI系统正在为您生成个性化学习路径...');
+                submitBtn.textContent = '已提交，生成中...';
+                submitBtn.disabled = true;
+                
+                // 模拟生成学习路径
+                setTimeout(() => {
+                    alert('个性化学习路径已生成！根据您的答题情况，推荐您重点学习：\n\n1. 网络攻击类型与防范措施\n2. 数据加密技术与应用\n3. 网络安全法律法规');
+                    submitBtn.textContent = '学习路径已生成';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

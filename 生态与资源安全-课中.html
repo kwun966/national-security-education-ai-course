@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生态与资源安全 - 课中学习模块</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f8fb;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .school-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .school-logo {
+            width: 70px;
+            height: 70px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 12px;
+            text-align: center;
+            padding: 5px;
+            font-weight: bold;
+            color: #27ae60;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .module-nav {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: #27ae60;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eaeaea;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: #2ecc71;
+        }
+        
+        h3 {
+            color: #27ae60;
+            margin: 20px 0 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        /* 课中模块样式 */
+        .key-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .point-card {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #27ae60;
+            transition: all 0.3s;
+        }
+        
+        .point-card:hover {
+            background: #e6f7ee;
+            transform: translateX(5px);
+        }
+        
+        .discussion-section {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .discussion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .discussion-topic {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .discussion-content {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .message {
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+        
+        .teacher-message {
+            background: #e6f7ee;
+            border-bottom-left-radius: 0;
+            margin-right: auto;
+        }
+        
+        .student-message {
+            background: #d4f3e3;
+            border-bottom-right-radius: 0;
+            margin-left: auto;
+        }
+        
+        .discussion-input {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .discussion-input input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+        
+        .discussion-input button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        
+        .simulation-section {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .simulation-scenario {
+            flex: 1;
+            min-width: 300px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .simulation-controls {
+            flex: 1;
+            min-width: 300px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .scenario-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .option {
+            padding: 12px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .option:hover {
+            background: #e6f7ee;
+            border-color: #27ae60;
+        }
+        
+        .option.selected {
+            background: #d4f3e3;
+            border-color: #27ae60;
+        }
+        
+        .simulation-feedback {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #219653;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .school-info {
+                flex-direction: column;
+            }
+            
+            .school-logo {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .simulation-section {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="school-info">
+                    <div class="school-logo">上海建桥学院</div>
+                    <div>
+                        <h1>生态与资源安全 - 课中学习模块</h1>
+                        <p class="subtitle">教师精讲重点 · 深度研讨 · AI模拟实训</p>
+                    </div>
+                </div>
+                <div class="module-nav">
+                    <button class="nav-btn"><i class="fas fa-home"></i> 首页</button>
+                    <button class="nav-btn"><i class="fas fa-book"></i> 课程大纲</button>
+                    <button class="nav-btn"><i class="fas fa-user"></i> 学习中心</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- 课中模块 -->
+        <div class="card">
+            <h2><i class="fas fa-chalkboard-teacher"></i> 教师精讲重点</h2>
+            <p>在本环节，教师将重点讲解生态与资源安全的核心概念、理论框架和实践应用，帮助学生建立系统化的知识体系。</p>
+            
+            <div class="key-points">
+                <div class="point-card">
+                    <h3><i class="fas fa-star"></i> 生态安全的内涵</h3>
+                    <p>生态系统健康、稳定和可持续发展，保障人类生存环境安全，维护生物多样性和生态平衡。</p>
+                </div>
+                <div class="point-card">
+                    <h3><i class="fas fa-sitemap"></i> 资源安全的核心</h3>
+                    <p>保障国家经济发展所需的自然资源稳定供应，包括能源、水资源、粮食和战略性矿产资源等。</p>
+                </div>
+                <div class="point-card">
+                    <h3><i class="fas fa-balance-scale"></i> 两者关系</h3>
+                    <p>生态安全是资源安全的基础，资源安全是生态安全的保障。两者相互依存，共同构成国家安全的重要支柱。</p>
+                </div>
+            </div>
+            
+            <div class="key-points">
+                <div class="point-card">
+                    <h3><i class="fas fa-shield-alt"></i> 生态安全面临的挑战</h3>
+                    <p>生物多样性丧失、土地荒漠化、环境污染、气候变化、外来物种入侵等。</p>
+                </div>
+                <div class="point-card">
+                    <h3><i class="fas fa-tint"></i> 资源安全面临的挑战</h3>
+                    <p>资源短缺、供需矛盾、外部依赖、价格波动、地缘政治风险等。</p>
+                </div>
+                <div class="point-card">
+                    <h3><i class="fas fa-globe"></i> 维护路径</h3>
+                    <p>推进生态文明建设、发展循环经济、加强国际合作、完善法律法规、提升资源利用效率。</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn"><i class="fas fa-download"></i> 下载教师讲义</button>
+                <button class="btn"><i class="fas fa-video"></i> 观看精讲视频</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-comments"></i> 深度研讨</h2>
+            <p>在本环节，教师将组织学生围绕核心问题进行深度研讨，培养学生批判性思维和综合分析能力。</p>
+            
+            <div class="discussion-section">
+                <div class="discussion-header">
+                    <h3>当前研讨主题：生态文明建设与资源安全保障的协同路径</h3>
+                    <span class="participants"><i class="fas fa-users"></i> 32人参与讨论</span>
+                </div>
+                
+                <div class="discussion-topic">
+                    <h4><i class="fas fa-question-circle"></i> 研讨问题：</h4>
+                    <p>在推进生态文明建设过程中，如何平衡经济发展与资源环境保护的关系？请结合具体案例，探讨实现生态安全与资源安全协同发展的有效路径。</p>
+                </div>
+                
+                <div class="discussion-content">
+                    <div class="message teacher-message">
+                        <strong>李教授：</strong>让我们开始讨论。首先请大家思考一下，"绿水青山就是金山银山"理念如何指导我们处理经济发展与生态保护的关系？
+                    </div>
+                    
+                    <div class="message student-message">
+                        <strong>学生张明：</strong>我认为这一理念强调生态环境本身具有经济价值，保护生态环境就是保护生产力，改善生态环境就是发展生产力。
+                    </div>
+                    
+                    <div class="message student-message">
+                        <strong>学生王芳：</strong>我同意张明的观点。另外，这一理念还指导我们发展生态旅游、生态农业等绿色产业，实现生态效益与经济效益的统一。
+                    </div>
+                    
+                    <div class="message teacher-message">
+                        <strong>李教授：</strong>很好的观点。那么大家认为在资源安全保障方面，我们应该采取哪些策略？
+                    </div>
+                    
+                    <div class="message student-message">
+                        <strong>学生赵强：</strong>我们应该发展循环经济，提高资源利用效率，同时加强战略资源储备，减少对外依赖。
+                    </div>
+                    
+                    <div class="message student-message">
+                        <strong>学生周婷：</strong>还可以推动科技创新，开发替代资源，加强国际合作，建立多元化的资源供应体系。
+                    </div>
+                </div>
+                
+                <div class="discussion-input">
+                    <input type="text" placeholder="请输入您的观点...">
+                    <button><i class="fas fa-paper-plane"></i> 发送</button>
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <h3>其他研讨主题</h3>
+                <ul>
+                    <li>"双碳"目标下的能源转型路径</li>
+                    <li>生物多样性保护与经济发展的平衡</li>
+                    <li>水资源安全与区域协调发展</li>
+                    <li>全球化背景下的资源安全保障策略</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-robot"></i> AI模拟实训</h2>
+            <p>在本环节，学生将通过AI模拟系统，在虚拟环境中应对各类生态与资源安全危机情境，培养实践能力和决策思维。</p>
+            
+            <div class="simulation-section">
+                <div class="simulation-scenario">
+                    <h3><i class="fas fa-project-diagram"></i> 模拟场景：区域水资源危机应对</h3>
+                    
+                    <div class="scenario-card">
+                        <h4>场景背景</h4>
+                        <p>假设你是一名区域发展规划负责人，该地区面临严重水资源短缺，同时生态环境脆弱。你需要制定综合方案，平衡经济发展与水资源保护。</p>
+                    </div>
+                    
+                    <div class="scenario-card">
+                        <h4>你的任务</h4>
+                        <p>分析水资源现状，评估各方需求，制定水资源配置方案，并提出生态环境保护措施，确保区域可持续发展。</p>
+                    </div>
+                    
+                    <div class="scenario-card">
+                        <h4>可用资源</h4>
+                        <ul>
+                            <li>水资源监测数据与分析系统</li>
+                            <li>经济发展需求预测模型</li>
+                            <li>生态保护专家咨询团队</li>
+                            <li>水资源调配工程技术支持</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="simulation-controls">
+                    <h3><i class="fas fa-cogs"></i> 决策选项</h3>
+                    
+                    <div class="options">
+                        <div class="option">优先保障基本民生用水，限制高耗水产业发展</div>
+                        <div class="option">加大水利工程建设，提高水资源调配能力</div>
+                        <div class="option">发展节水技术和循环利用，提高用水效率</div>
+                        <div class="option">实施生态补偿机制，保护水源地生态环境</div>
+                    </div>
+                    
+                    <button class="btn" style="width: 100%;"><i class="fas fa-play"></i> 执行选定方案</button>
+                    
+                    <div class="simulation-feedback">
+                        <h4><i class="fas fa-comment-dots"></i> AI反馈与评估</h4>
+                        <p>请先选择决策方案并执行，AI系统将根据您的选择提供实时反馈和评估报告。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3>其他模拟场景</h3>
+                <div class="options">
+                    <div class="option">生物多样性保护与土地开发平衡</div>
+                    <div class="option">能源转型与经济社会影响评估</div>
+                    <div class="option">气候变化适应与防灾减灾规划</div>
+                    <div class="option">跨境资源合作与地缘政治风险</div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <button class="btn"><i class="fas fa-arrow-right"></i> 进入课后学习模块</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>上海建桥学院马克思主义学院 © 2024 | 《国家安全教育》课程组</p>
+            <p>地址：上海市浦东新区沪城环路1111号 | 电话：021-58137799</p>
+            <p>AI技术支持：建桥教育科技人工智能实验室</p>
+        </div>
+    </footer>
+
+    <script>
+        // 交互功能实现
+        document.addEventListener('DOMContentLoaded', function() {
+            // 决策选项选择
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    // 移除同区域中其他选项的选中状态
+                    const parent = this.closest('.options');
+                    if (parent) {
+                        parent.querySelectorAll('.option').forEach(opt => {
+                            opt.classList.remove('selected');
+                        });
+                    }
+                    
+                    // 选中当前选项
+                    this.classList.add('selected');
+                });
+            });
+            
+            // 发送讨论消息
+            const discussionInput = document.querySelector('.discussion-input input');
+            const discussionButton = document.querySelector('.discussion-input button');
+            const discussionContent = document.querySelector('.discussion-content');
+            
+            discussionButton.addEventListener('click', sendDiscussionMessage);
+            discussionInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendDiscussionMessage();
+                }
+            });
+            
+            function sendDiscussionMessage() {
+                const message = discussionInput.value.trim();
+                if (message) {
+                    // 添加用户消息
+                    const messageDiv = document.createElement('div');
+                    messageDiv.classList.add('message', 'student-message');
+                    messageDiv.innerHTML = `<strong>您：</strong> ${message}`;
+                    
+                    discussionContent.appendChild(messageDiv);
+                    discussionInput.value = '';
+                    
+                    // 滚动到底部
+                    discussionContent.scrollTop = discussionContent.scrollHeight;
+                    
+                    // 模拟教师回复
+                    setTimeout(() => {
+                        const teacherMessageDiv = document.createElement('div');
+                        teacherMessageDiv.classList.add('message', 'teacher-message');
+                        teacherMessageDiv.innerHTML = `<strong>李教授：</strong> 感谢您的参与。这个观点很有价值，能进一步阐述您的想法吗？`;
+                        
+                        discussionContent.appendChild(teacherMessageDiv);
+                        discussionContent.scrollTop = discussionContent.scrollHeight;
+                    }, 2000);
+                }
+            }
+            
+            // 模拟实训执行按钮
+            const executeBtn = document.querySelector('.simulation-controls .btn');
+            executeBtn.addEventListener('click', function() {
+                const selectedOption = document.querySelector('.simulation-controls .option.selected');
+                const feedback = document.querySelector('.simulation-feedback');
+                
+                if (!selectedOption) {
+                    feedback.innerHTML = `<h4><i class="fas fa-exclamation-circle"></i> AI反馈与评估</h4>
+                        <p style="color: #e74c3c;">请先选择一个决策方案再执行。</p>`;
+                    return;
+                }
+                
+                // 根据选择提供不同的反馈
+                const optionText = selectedOption.textContent;
+                let response = "";
+                
+                if (optionText.includes("民生用水")) {
+                    response = "您的选择：优先保障基本民生用水，限制高耗水产业发展。<br><br>AI评估：这是一个以人民为中心的决策，能够确保社会稳定和基本需求，但可能影响经济发展。建议同时发展节水产业，寻找新的经济增长点。";
+                } else if (optionText.includes("水利工程")) {
+                    response = "您的选择：加大水利工程建设，提高水资源调配能力。<br><br>AI评估：这是解决水资源空间分布不均的有效措施，但需要注意工程对生态环境的影响，做好环境影响评估和生态补偿。";
+                } else if (optionText.includes("节水技术")) {
+                    response = "您的选择：发展节水技术和循环利用，提高用水效率。<br><br>AI评估：这是一个可持续发展的策略，能够从根本上缓解水资源压力。建议加强科技创新和政策引导，推动全社会节水意识提升。";
+                } else if (optionText.includes("生态补偿")) {
+                    response = "您的选择：实施生态补偿机制，保护水源地生态环境。<br><br>AI评估：这是保护水资源源头的关键措施，能够实现上下游协同发展。需要建立合理的补偿标准和长效机制，确保生态保护的可持续性。";
+                }
+                
+                feedback.innerHTML = `<h4><i class="fas fa-comment-dots"></i> AI反馈与评估</h4><p>${response}</p>`;
+            });
+        });
+    </script>
+</body>
+</html>
